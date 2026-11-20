@@ -176,6 +176,198 @@ Complete source code Complete source code
 
 Project report and documentation
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Shopping Store</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+}
+header {
+  background: #172337;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+nav {
+  background: #2874f0;
+  padding: 15px;
+  text-align: center;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 15px;
+}
+.container {
+  padding: 25px;
+}
+#search {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+.products {
+  display: grid;
+  grid-template-columns:
+  repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+.product {
+  background: white;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px #ccc;
+}
+.product img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+}
+button {
+  background: #fb641b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+button:hover {
+  background: #e65310;
+}
+#cart {
+  background: white;
+  padding: 20px;
+  margin-top: 25px;
+  border-radius: 10px;
+}
+footer {
+  background: #172337;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>My Online Shopping Store</h1>
+  <p>Shop Your Favourite Products</p>
+</header>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#products">Products</a>
+  <a href="#cart">My Cart</a>
+</nav>
+
+<div class="container">
+  <h2>Our Products</h2>
+  <input type="text" id="search"
+    placeholder="Search products..."
+    oninput="searchProducts()">
+
+  <div class="products" id="products">
+
+    <div class="product" data-name="Shoes">
+      <img src="https://placehold.co/200x160?text=Shoes">
+      <h3>Shoes</h3>
+      <p>₹999</p>
+      <button onclick="addToCart('Shoes',999)">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="product" data-name="Watch">
+      <img src="https://placehold.co/200x160?text=Watch">
+      <h3>Watch</h3>
+      <p>₹1499</p>
+      <button onclick="addToCart('Watch',1499)">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="product" data-name="Bag">
+      <img src="https://placehold.co/200x160?text=Bag">
+      <h3>Bag</h3>
+      <p>₹799</p>
+      <button onclick="addToCart('Bag',799)">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="product" data-name="Headphones">
+      <img src="https://placehold.co/200x160?text=Headphones">
+      <h3>Headphones</h3>
+      <p>₹1999</p>
+      <button onclick="addToCart('Headphones',1999)">
+        Add to Cart
+      </button>
+    </div>
+
+  </div>
+
+  <div id="cart">
+    <h2>Shopping Cart 🛒</h2>
+    <ul id="cartItems"></ul>
+    <h3>Total: ₹<span id="total">0</span></h3>
+    <button onclick="checkout()">Checkout</button>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 My Online Shopping Store</p>
+</footer>
+
+<script>
+let total = 0;
+
+function addToCart(name, price) {
+  let item = document.createElement("li");
+  item.textContent = name + " - ₹" + price;
+  document.getElementById("cartItems").appendChild(item);
+
+  total += price;
+  document.getElementById("total").textContent = total;
+}
+
+function searchProducts() {
+  let input = document.getElementById("search")
+    .value.toLowerCase();
+
+  let products = document.querySelectorAll(".product");
+
+  products.forEach(product => {
+    let name = product.dataset.name.toLowerCase();
+    product.style.display =
+      name.includes(input) ? "block" : "none";
+  });
+}
+
+function checkout() {
+  if (total === 0) {
+    alert("Your cart is empty!");
+  } else {
+    alert("Thank you for shopping! Total: ₹" + total);
+  }
+}
+</script>
+
+</body>
+</html>
+
 PPT and diagrams
 
 Complete project with code, report and PPT
